@@ -1,13 +1,10 @@
 let clock = document.querySelector("#out");
-console.log("hello")
-function time(){
-    let hours = (new Date()).getHours();
-    let minutes = (new Date()).getMinutes();
-    let seconds = (new Date()).getSeconds();
-   
+setInterval(()=>{
+    let [hours,minutes,seconds] = new Date().toLocaleTimeString().split(":")
+    seconds = seconds.split(" ")[0]
     hours = (hours<10) ? "0" + hours : hours;
     minutes  = (minutes <10) ? "0" + minutes : minutes ;
-    seconds = (seconds<10) ? "0" + seconds : seconds;
+    // seconds = (seconds<10) ? "0" + seconds : seconds;
 
     let html = `<div id="outer">
     Digital clock 
@@ -18,9 +15,6 @@ function time(){
     </div>
     </div>
     `
-    setTimeout("time()",500)
     clock.innerHTML=html;
-}
 
-
-time()
+},1000)
